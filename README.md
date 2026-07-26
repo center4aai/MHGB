@@ -1,5 +1,7 @@
 # MHGB — Multi-Hop Graph Bench for Legal Reasoning
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21611555.svg)](https://doi.org/10.5281/zenodo.21611555)
+
 MHGB is a benchmark for evaluating multi-hop legal reasoning over Russian statutory law.
 It represents statutory knowledge as a typed graph of 5,519 article nodes connected by
 8,760 relations of five types across ten federal codes, and uses that structure to
@@ -290,7 +292,8 @@ released under CC BY-4.0 with the rest of the derived data. See [`NOTICE`](NOTIC
 }
 ```
 
-See also [`CITATION.cff`](CITATION.cff).
+The archived release carries the DOI [10.5281/zenodo.21611555](https://doi.org/10.5281/zenodo.21611555),
+which always resolves to the latest version. See also [`CITATION.cff`](CITATION.cff).
 
 ---
 

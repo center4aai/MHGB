@@ -26,6 +26,8 @@ authors:
   - given-names: Pavel
     family-names: Golosov
     affiliation: "Institute of Social Sciences"
+doi: "10.5281/zenodo.21611555"
+version: 1.0.0
 license: Apache-2.0
 license-url: "https://www.apache.org/licenses/LICENSE-2.0"
 keywords:
