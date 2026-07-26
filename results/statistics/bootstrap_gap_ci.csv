@@ -1,0 +1,13 @@
+model,exp,n_pairs,mean_gap,ci_low,ci_high
+Gemini 3.1 Pro,gemini_full600,300,0.1249,0.1032,0.1469
+Claude Sonnet 4.6,claude_full600,300,0.1504,0.1286,0.1728
+DeepSeek-R1 671B,deepseek_api_full600,287,0.2034,0.1727,0.235
+o3,o3_full600,293,0.1767,0.1462,0.2097
+GPT-4o,gpt4o_full600,276,0.2341,0.2041,0.2657
+GigaChat-2 Max,gigachat2max_full600,300,0.0418,-0.0044,0.0892
+YandexGPT 5.1 Pro,yandexgpt_full600,287,0.235,0.201,0.2705
+Gemma-4 26B,gemma4_full600,300,0.2967,0.2674,0.3262
+GigaChat-2 Lite,gigachat_lite_full600,300,-0.0084,-0.0517,0.0336
+Mistral Small 3.2,mistral_full600,300,0.2567,0.2237,0.2884
+T-pro-it-2.1,tpro_full600,300,0.3322,0.2951,0.3692
+DeepSeek-R1 32B,deepseek-r1-32b-ollama_full600,300,0.3161,0.2834,0.3502

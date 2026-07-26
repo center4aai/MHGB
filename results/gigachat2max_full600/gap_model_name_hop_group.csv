@@ -1,0 +1,4 @@
+model_name,hop_group,n_pairs,norm_coverage_gap_mean,norm_coverage_gap_std,step_correctness_gap_mean,step_correctness_gap_std,answer_correctness_gap_mean,answer_correctness_gap_std,final_score_gap_mean,final_score_gap_std,q_knows,q_reasons,q_hallucinates,q_incompetent
+gigachat-2-max,deep,100,0.1075,0.4333,0.1088,0.3266,-0.2173,0.4356,-0.0003,0.3542,18,36,9,37
+gigachat-2-max,medium,100,0.1195,0.4449,0.1883,0.3654,-0.1501,0.4704,0.0526,0.3819,41,30,14,15
+gigachat-2-max,shallow,100,0.1151,0.5132,0.1475,0.5897,-0.0434,0.56,0.0731,0.4855,41,32,18,9

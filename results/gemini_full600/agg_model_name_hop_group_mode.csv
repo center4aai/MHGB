@@ -1,0 +1,7 @@
+model_name,hop_group,mode,count,norm_coverage_list_mean,norm_coverage_list_std,norm_coverage_reasoning_mean,norm_coverage_reasoning_std,step_correctness_mean,step_correctness_std,answer_correctness_mean,answer_correctness_std,final_score_mean,final_score_std
+gemini-3.1-pro-preview,deep,closed,100,0.5585,0.1813,0.5404,0.1874,0.4326,0.1876,0.711,0.3238,0.5674,0.1712
+gemini-3.1-pro-preview,deep,open_full_graph_edges,100,0.778,0.149,0.7662,0.1601,0.6344,0.1928,0.7809,0.2928,0.7311,0.1568
+gemini-3.1-pro-preview,medium,closed,100,0.6611,0.2047,0.6545,0.2018,0.5954,0.2291,0.7372,0.3461,0.6646,0.1838
+gemini-3.1-pro-preview,medium,open_full_graph_edges,100,0.8096,0.1628,0.8074,0.1738,0.76,0.204,0.747,0.3765,0.7722,0.1848
+gemini-3.1-pro-preview,shallow,closed,100,0.5897,0.3127,0.6027,0.3125,0.7625,0.3336,0.8103,0.3553,0.7208,0.2445
+gemini-3.1-pro-preview,shallow,open_full_graph_edges,100,0.7687,0.2179,0.7814,0.2137,0.8933,0.1975,0.8102,0.3522,0.8241,0.1727

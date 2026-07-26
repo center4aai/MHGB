@@ -1,0 +1,7 @@
+model_name,hop_group,mode,count,norm_coverage_list_mean,norm_coverage_list_std,norm_coverage_reasoning_mean,norm_coverage_reasoning_std,step_correctness_mean,step_correctness_std,answer_correctness_mean,answer_correctness_std,final_score_mean,final_score_std
+deepseek-r1-api,deep,closed,100,0.4259,0.1891,0.4204,0.198,0.3516,0.1924,0.6577,0.3369,0.4784,0.1779
+deepseek-r1-api,deep,open_full_graph_edges,89,0.7521,0.1885,0.7222,0.208,0.6459,0.1773,0.7611,0.3217,0.7197,0.1514
+deepseek-r1-api,medium,closed,100,0.4896,0.2431,0.492,0.2543,0.4846,0.2698,0.6904,0.3801,0.5549,0.2193
+deepseek-r1-api,medium,open_full_graph_edges,98,0.7528,0.1709,0.7336,0.1918,0.7802,0.2004,0.8032,0.3412,0.7787,0.1749
+deepseek-r1-api,shallow,closed,100,0.4956,0.3335,0.4945,0.3417,0.67,0.3852,0.7335,0.4211,0.633,0.2784
+deepseek-r1-api,shallow,open_full_graph_edges,100,0.63,0.2342,0.6376,0.2477,0.9142,0.1984,0.7966,0.3934,0.7803,0.1813

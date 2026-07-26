@@ -1,0 +1,3 @@
+model_name,mode,count,norm_coverage_list_mean,norm_coverage_list_std,norm_coverage_reasoning_mean,norm_coverage_reasoning_std,step_correctness_mean,step_correctness_std,answer_correctness_mean,answer_correctness_std,final_score_mean,final_score_std
+deepseek-r1-32b-ollama,closed,300,0.3185,0.3656,0.32,0.3679,0.2239,0.2977,0.5424,0.3938,0.3616,0.2559
+deepseek-r1-32b-ollama,open_full_graph_edges,300,0.7083,0.2474,0.721,0.2527,0.6122,0.2664,0.7128,0.3543,0.6777,0.2034

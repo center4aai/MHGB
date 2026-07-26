@@ -1,0 +1,2 @@
+model_name,n_pairs,norm_coverage_gap_mean,norm_coverage_gap_std,step_correctness_gap_mean,step_correctness_gap_std,answer_correctness_gap_mean,answer_correctness_gap_std,final_score_gap_mean,final_score_gap_std,q_knows,q_reasons,q_hallucinates,q_incompetent
+yandexgpt-5-pro,287,0.3067,0.3951,0.3006,0.3478,0.0977,0.3915,0.235,0.3117,102,137,9,39

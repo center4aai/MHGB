@@ -1,0 +1,2 @@
+model_name,n_pairs,norm_coverage_gap_mean,norm_coverage_gap_std,step_correctness_gap_mean,step_correctness_gap_std,answer_correctness_gap_mean,answer_correctness_gap_std,final_score_gap_mean,final_score_gap_std,q_knows,q_reasons,q_hallucinates,q_incompetent
+gigachat-lite,300,-0.0619,0.4664,0.1383,0.4043,-0.1016,0.5248,-0.0084,0.3693,52,70,53,125

@@ -1,0 +1,5 @@
+model_name,task_type,n_pairs,norm_coverage_gap_mean,norm_coverage_gap_std,step_correctness_gap_mean,step_correctness_gap_std,answer_correctness_gap_mean,answer_correctness_gap_std,final_score_gap_mean,final_score_gap_std,q_knows,q_reasons,q_hallucinates,q_incompetent
+mistral-small-3-2,conflict_resolution,75,0.2038,0.2889,0.2314,0.2239,0.1247,0.4314,0.1866,0.2168,32,26,1,16
+mistral-small-3-2,issue_spotting,75,0.4541,0.395,0.5554,0.3006,0.2496,0.4114,0.4197,0.2438,8,56,0,11
+mistral-small-3-2,rule_selection,75,0.377,0.3938,0.3866,0.3256,0.124,0.4931,0.2959,0.3241,16,40,5,14
+mistral-small-3-2,temporal_validity,75,0.1883,0.4213,0.1101,0.3432,0.0755,0.4923,0.1246,0.3133,25,22,10,18

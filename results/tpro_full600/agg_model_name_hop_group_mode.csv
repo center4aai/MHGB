@@ -1,0 +1,7 @@
+model_name,hop_group,mode,count,norm_coverage_list_mean,norm_coverage_list_std,norm_coverage_reasoning_mean,norm_coverage_reasoning_std,step_correctness_mean,step_correctness_std,answer_correctness_mean,answer_correctness_std,final_score_mean,final_score_std
+t-pro-it-2.1,deep,closed,100,0.2633,0.2355,0.2318,0.2387,0.1894,0.1648,0.4173,0.42,0.29,0.2161
+t-pro-it-2.1,deep,open_full_graph_edges,100,0.7558,0.1679,0.7137,0.1918,0.5702,0.1934,0.6772,0.3864,0.6677,0.1928
+t-pro-it-2.1,medium,closed,100,0.373,0.3312,0.3899,0.3421,0.2975,0.2763,0.5668,0.4307,0.4124,0.2726
+t-pro-it-2.1,medium,open_full_graph_edges,100,0.7504,0.1744,0.7494,0.1878,0.7192,0.2143,0.747,0.3824,0.7388,0.1897
+t-pro-it-2.1,shallow,closed,100,0.3623,0.346,0.3739,0.351,0.43,0.4082,0.5501,0.4653,0.4475,0.3241
+t-pro-it-2.1,shallow,open_full_graph_edges,100,0.6556,0.2511,0.687,0.2523,0.8342,0.2769,0.7298,0.4152,0.7399,0.2324

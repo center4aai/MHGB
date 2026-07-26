@@ -1,0 +1,2 @@
+model_name,n_pairs,norm_coverage_gap_mean,norm_coverage_gap_std,step_correctness_gap_mean,step_correctness_gap_std,answer_correctness_gap_mean,answer_correctness_gap_std,final_score_gap_mean,final_score_gap_std,q_knows,q_reasons,q_hallucinates,q_incompetent
+gigachat-2-max,300,0.114,0.4636,0.1482,0.4424,-0.1369,0.495,0.0418,0.4109,100,98,41,61

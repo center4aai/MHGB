@@ -1,0 +1,7 @@
+model_name,hop_group,mode,count,norm_coverage_list_mean,norm_coverage_list_std,norm_coverage_reasoning_mean,norm_coverage_reasoning_std,step_correctness_mean,step_correctness_std,answer_correctness_mean,answer_correctness_std,final_score_mean,final_score_std
+yandexgpt-5-pro,deep,closed,100,0.3208,0.2166,0.2883,0.2141,0.1776,0.1296,0.5575,0.301,0.352,0.1682
+yandexgpt-5-pro,deep,open_full_graph_edges,88,0.6868,0.2127,0.6586,0.2043,0.448,0.194,0.6677,0.3356,0.6008,0.1969
+yandexgpt-5-pro,medium,closed,100,0.4333,0.3328,0.4223,0.3371,0.2508,0.1987,0.6236,0.328,0.4359,0.2259
+yandexgpt-5-pro,medium,open_full_graph_edges,99,0.7019,0.2763,0.6983,0.2703,0.532,0.2702,0.7244,0.3535,0.6528,0.251
+yandexgpt-5-pro,shallow,closed,100,0.5007,0.4288,0.5057,0.4375,0.4375,0.4021,0.6471,0.4018,0.5284,0.328
+yandexgpt-5-pro,shallow,open_full_graph_edges,100,0.795,0.2921,0.82,0.2871,0.7842,0.3163,0.7336,0.3851,0.7709,0.2688

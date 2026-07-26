@@ -1,0 +1,2 @@
+model_name,n_pairs,norm_coverage_gap_mean,norm_coverage_gap_std,step_correctness_gap_mean,step_correctness_gap_std,answer_correctness_gap_mean,answer_correctness_gap_std,final_score_gap_mean,final_score_gap_std,q_knows,q_reasons,q_hallucinates,q_incompetent
+gemma4-26b,300,0.2952,0.3862,0.3904,0.3142,0.2045,0.3934,0.2967,0.2682,101,151,7,41

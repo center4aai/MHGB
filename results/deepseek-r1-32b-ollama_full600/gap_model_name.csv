@@ -1,0 +1,2 @@
+model_name,n_pairs,norm_coverage_gap_mean,norm_coverage_gap_std,step_correctness_gap_mean,step_correctness_gap_std,answer_correctness_gap_mean,answer_correctness_gap_std,final_score_gap_mean,final_score_gap_std,q_knows,q_reasons,q_hallucinates,q_incompetent
+deepseek-r1-32b-ollama,300,0.3898,0.3887,0.3882,0.3438,0.1704,0.4762,0.3161,0.2939,66,181,8,45

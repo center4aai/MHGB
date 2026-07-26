@@ -1,0 +1,13 @@
+task_type,hop_group,count,norm_coverage_list_mean,norm_coverage_list_std,norm_coverage_reasoning_mean,norm_coverage_reasoning_std,step_correctness_mean,step_correctness_std,answer_correctness_mean,answer_correctness_std,final_score_mean,final_score_std
+conflict_resolution,deep,47,0.6012,0.2381,0.5834,0.2243,0.3995,0.1856,0.6104,0.3894,0.537,0.1944
+conflict_resolution,medium,50,0.6802,0.2346,0.6813,0.2304,0.58,0.2553,0.6406,0.3863,0.6336,0.2037
+conflict_resolution,shallow,50,0.7861,0.2573,0.7854,0.2594,0.7317,0.2804,0.5736,0.462,0.6971,0.25
+issue_spotting,deep,42,0.4426,0.3019,0.4511,0.3001,0.447,0.2573,0.6526,0.233,0.5141,0.2128
+issue_spotting,medium,48,0.5428,0.2862,0.5442,0.2802,0.6024,0.3069,0.7235,0.2605,0.6229,0.235
+issue_spotting,shallow,50,0.484,0.3496,0.514,0.3709,0.6633,0.4242,0.8398,0.3251,0.6624,0.302
+rule_selection,deep,44,0.6002,0.2488,0.5926,0.2424,0.4461,0.2256,0.6527,0.3447,0.5663,0.2094
+rule_selection,medium,50,0.6736,0.2473,0.6708,0.24,0.6208,0.2804,0.9068,0.2611,0.7338,0.219
+rule_selection,shallow,50,0.5525,0.2808,0.5742,0.2858,0.675,0.3492,0.7472,0.3958,0.6582,0.2616
+temporal_validity,deep,45,0.5106,0.2304,0.5044,0.2335,0.3546,0.2254,0.7191,0.3691,0.5281,0.2203
+temporal_validity,medium,50,0.7357,0.2761,0.7269,0.2804,0.4992,0.2728,0.7734,0.3718,0.6694,0.2361
+temporal_validity,shallow,50,0.5213,0.2481,0.548,0.26,0.71,0.4024,0.7936,0.362,0.675,0.239

@@ -1,0 +1,270 @@
+# MHGB — model configuration
+#
+# Every model evaluated in the paper is listed here, plus the two judges.
+# Endpoints for self-hosted models point at localhost defaults; set them to your
+# own inference servers. API keys are read from environment variables (see
+# .env.example) and are never stored in this file.
+#
+# ROUTING RULES
+#   GigaChat (Sber)   -> client_type: gigachat        (endpoint is fixed in GigaChatClient,
+#                                                      api_base must stay null)
+#   YandexGPT         -> client_type: openai_compatible + Yandex Cloud endpoint
+#   Other API models  -> client_type: openai_compatible. In our runs all five were
+#                        reached through a single OpenAI-compatible gateway; set
+#                        PROPRIETARY_API_BASE / PROPRIETARY_API_KEY to your own
+#                        gateway, or replace api_base per model with the provider
+#                        endpoint you use.
+#   Ollama            -> client_type: native_ollama   (/api/chat; honours num_ctx,
+#                                                      which the OpenAI-compatible
+#                                                      /v1 endpoint silently ignores)
+#
+# FIELDS
+#   name          — identifier used in CLI flags, reports and MongoDB
+#   display_name  — label for tables and figures
+#   client_type   — "openai_compatible" | "gigachat" | "native_ollama"
+#   slice         — "proprietary" | "russian" | "open_source"
+#   type          — "general" | "reasoning"
+#   size          — parameter count (informational)
+#   adapted_to_ru — model was additionally trained on Russian data
+#   api_base      — endpoint URL; null for GigaChat
+#   api_key_env   — name of the environment variable holding the key (null = none)
+#   model_id      — model name as the API expects it
+#   max_tokens    — output budget
+#   temperature   — 0.0 everywhere except o3, which requires 1.0
+#   num_ctx       — explicit context window for Ollama models (required: the server
+#                   default of 131072 allocates far more VRAM than these runs need)
+#   token_budget  — per-model override of the open-book context budget
+#   role          — "participant" (on the leaderboard) | "judge" (outside it)
+
+models:
+
+  # ==========================================================================
+  # Proprietary API models
+  # ==========================================================================
+
+  - name: o3
+    display_name: "OpenAI o3"
+    client_type: openai_compatible
+    slice: proprietary
+    type: reasoning
+    size: "closed"
+    adapted_to_ru: false
+    api_base: "${PROPRIETARY_API_BASE}"
+    api_key_env: "PROPRIETARY_API_KEY"
+    model_id: "o3"
+    max_tokens: 4096
+    temperature: 1.0          # o3 does not accept temperature < 1.0
+    role: participant
+
+  - name: gpt-4o
+    display_name: "GPT-4o"
+    client_type: openai_compatible
+    slice: proprietary
+    type: general
+    size: "closed"
+    adapted_to_ru: false
+    api_base: "${PROPRIETARY_API_BASE}"
+    api_key_env: "PROPRIETARY_API_KEY"
+    model_id: "gpt-4o-2024-11-20"
+    max_tokens: 2048
+    temperature: 0.0
+    role: participant
+
+  - name: deepseek-r1-api
+    display_name: "DeepSeek-R1 (API, 671B)"
+    client_type: openai_compatible
+    slice: proprietary
+    type: reasoning
+    size: "671B"
+    adapted_to_ru: false
+    api_base: "${PROPRIETARY_API_BASE}"
+    api_key_env: "PROPRIETARY_API_KEY"
+    model_id: "deepseek-r1-0528"
+    max_tokens: 4096
+    temperature: 0.0
+    role: participant
+
+  - name: gemini-3.1-pro-preview
+    display_name: "Gemini 3.1 Pro Preview"
+    client_type: openai_compatible
+    slice: proprietary
+    type: reasoning
+    size: "closed"
+    adapted_to_ru: false
+    api_base: "${PROPRIETARY_API_BASE}"
+    api_key_env: "PROPRIETARY_API_KEY"
+    model_id: "gemini-3.1-pro-preview"
+    max_tokens: 8192          # reasoning happens server-side but counts against max_tokens
+    temperature: 0.0
+    role: participant
+
+  - name: claude-sonnet-4-6
+    display_name: "Claude Sonnet 4.6"
+    client_type: openai_compatible
+    slice: proprietary
+    type: general
+    size: "closed"
+    adapted_to_ru: false
+    api_base: "${PROPRIETARY_API_BASE}"
+    api_key_env: "PROPRIETARY_API_KEY"
+    model_id: "claude-sonnet-4.6"
+    max_tokens: 4096
+    temperature: 0.0
+    role: participant
+
+  # ==========================================================================
+  # Russian-adapted API models
+  # ==========================================================================
+
+  - name: gigachat-lite
+    display_name: "GigaChat 2 Lite (Sber)"
+    client_type: gigachat
+    slice: russian
+    type: general
+    size: "closed"
+    adapted_to_ru: true
+    api_base: null                            # endpoint is fixed inside GigaChatClient
+    credentials_env: "GIGACHAT_CREDENTIALS"   # base64(client_id:client_secret)
+    model_id: "GigaChat-2"
+    max_tokens: 2048
+    temperature: 0.0
+    role: participant
+
+  - name: gigachat-2-max
+    display_name: "GigaChat 2 Max (Sber)"
+    client_type: gigachat
+    slice: russian
+    type: general
+    size: "closed"
+    adapted_to_ru: true
+    api_base: null
+    credentials_env: "GIGACHAT_CREDENTIALS"
+    scope: "GIGACHAT_API_PERS"                # switch to GIGACHAT_API_CORP on 403
+    model_id: "GigaChat-2-Max"
+    max_tokens: 2048
+    temperature: 0.0
+    role: participant
+
+  - name: yandexgpt-5-pro
+    display_name: "YandexGPT 5.1 Pro"
+    client_type: openai_compatible
+    slice: russian
+    type: general
+    size: "closed"
+    adapted_to_ru: true
+    api_base: "https://ai.api.cloud.yandex.net/v1"
+    api_key_env: "YANDEX_API_KEY"
+    # model_id embeds the Yandex Cloud folder id: gpt://<folder-id>/yandexgpt-5.1/latest
+    model_id: "gpt://YOUR_YANDEX_FOLDER_ID/yandexgpt-5.1/latest"
+    max_tokens: 2048
+    temperature: 0.0
+    token_budget: 27000       # 32K input limit; the default 40K budget does not fit
+    role: participant
+
+  # ==========================================================================
+  # Open-weight models, self-hosted via Ollama
+  # Set api_base to your own Ollama endpoint. NativeOllamaClient rewrites the
+  # trailing /v1 to /api/chat automatically.
+  # ==========================================================================
+
+  - name: t-pro-it-2.1
+    display_name: "T-Pro (T-Bank, 32B)"
+    client_type: native_ollama
+    slice: russian
+    type: general
+    size: "~32B"
+    adapted_to_ru: true
+    api_base: "${OLLAMA_API_BASE:-http://localhost:11434/v1}"
+    api_key_env: null
+    model_id: "t-tech/T-pro-it-2.1:q4_K_M"
+    max_tokens: 2048
+    temperature: 0.0
+    num_ctx: 131072           # covers the longest observed prompt (82 517 tokens)
+    role: participant
+
+  - name: gemma4-26b
+    display_name: "Gemma-4 26B (MoE)"
+    client_type: native_ollama
+    slice: open_source
+    type: general
+    size: "26B (3.8B active, MoE)"
+    vram_gb: 18
+    adapted_to_ru: false
+    api_base: "${OLLAMA_API_BASE:-http://localhost:11434/v1}"
+    api_key_env: null
+    model_id: "gemma4:26b"
+    max_tokens: 4096
+    temperature: 0.0
+    num_ctx: 131072
+    think: false              # the native thinking channel runs away on some deep tasks
+                              # and empties the answer field; reasoning goes inline instead
+    role: participant
+
+  - name: mistral-small-3-2
+    display_name: "Mistral Small 3.2 (24B)"
+    client_type: native_ollama
+    slice: open_source
+    type: general
+    size: "24B"
+    vram_gb: 15
+    adapted_to_ru: false
+    api_base: "${OLLAMA_API_BASE:-http://localhost:11434/v1}"
+    api_key_env: null
+    model_id: "mistral-small3.2:24b"
+    max_tokens: 4096
+    temperature: 0.0
+    num_ctx: 131072
+    role: participant
+
+  - name: deepseek-r1-32b-ollama
+    display_name: "DeepSeek-R1-Distill 32B"
+    client_type: native_ollama
+    slice: open_source
+    type: reasoning
+    size: "32B"
+    vram_gb: 20
+    adapted_to_ru: false
+    api_base: "${OLLAMA_API_BASE:-http://localhost:11434/v1}"
+    api_key_env: null
+    model_id: "deepseek-r1:32b"
+    max_tokens: 8192
+    temperature: 0.0
+    timeout: 600
+    num_ctx: 100000           # fits the longest prompt (87 385 tokens) plus the output
+    role: participant
+
+  # ==========================================================================
+  # Judges — scored no answers of their own and are absent from the leaderboard
+  # ==========================================================================
+
+  - name: llama3.3-70b-judge
+    display_name: "Llama 3.3 70B (primary judge)"
+    client_type: native_ollama
+    slice: open_source
+    type: general
+    size: "70B"
+    adapted_to_ru: false
+    api_base: "${OLLAMA_API_BASE:-http://localhost:11434/v1}"
+    api_key_env: null
+    model_id: "llama3.3:70b"
+    max_tokens: 3500
+    temperature: 0.0
+    num_ctx: 16384            # judge prompts peak around 6.4K tokens
+    timeout: 600              # a cold 42 GB load can exceed 300 s
+    role: judge
+    notes: "Primary judge, selected by the pilot in Section 4 (step correctness Cohen kappa 0.695)"
+
+  - name: qwen3-27b-server
+    display_name: "Qwen3.6 27B (secondary judge, llama.cpp)"
+    client_type: openai_compatible
+    slice: open_source
+    type: reasoning
+    size: "27B"
+    adapted_to_ru: false
+    api_base: "${LLAMACPP_API_BASE:-http://localhost:8080/v1}"
+    api_key_env: null
+    model_id: "qwen3.6-27b"
+    max_tokens: 3500
+    temperature: 0.0
+    role: judge
+    notes: "Secondary judge used for the cross-judge agreement check"

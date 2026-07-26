@@ -1,0 +1,9 @@
+model_name,task_type,mode,count,norm_coverage_list_mean,norm_coverage_list_std,norm_coverage_reasoning_mean,norm_coverage_reasoning_std,step_correctness_mean,step_correctness_std,answer_correctness_mean,answer_correctness_std,final_score_mean,final_score_std
+gemma4-26b,conflict_resolution,closed,75,0.5456,0.2892,0.4679,0.3596,0.434,0.2765,0.6053,0.3905,0.5283,0.2584
+gemma4-26b,conflict_resolution,open_full_graph_edges,75,0.7371,0.291,0.6173,0.3743,0.6724,0.227,0.756,0.3567,0.7218,0.2173
+gemma4-26b,issue_spotting,closed,75,0.233,0.2498,0.1992,0.2829,0.2069,0.2329,0.5783,0.298,0.3394,0.1969
+gemma4-26b,issue_spotting,open_full_graph_edges,75,0.6739,0.3385,0.5938,0.4193,0.8235,0.1855,0.8457,0.1834,0.7811,0.1668
+gemma4-26b,rule_selection,closed,75,0.3374,0.2596,0.2744,0.2912,0.2761,0.2722,0.5251,0.3964,0.3795,0.2491
+gemma4-26b,rule_selection,open_full_graph_edges,75,0.6561,0.3399,0.5313,0.3807,0.7004,0.2307,0.7963,0.3235,0.7176,0.2023
+gemma4-26b,temporal_validity,closed,75,0.3926,0.3153,0.3288,0.3383,0.3297,0.3449,0.6627,0.3935,0.4617,0.2538
+gemma4-26b,temporal_validity,open_full_graph_edges,75,0.6221,0.3253,0.5552,0.3624,0.6121,0.2723,0.7913,0.3325,0.6752,0.2242

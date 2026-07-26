@@ -1,0 +1,5 @@
+task_type,n_pairs,norm_coverage_gap_mean,norm_coverage_gap_std,step_correctness_gap_mean,step_correctness_gap_std,answer_correctness_gap_mean,answer_correctness_gap_std,final_score_gap_mean,final_score_gap_std,q_knows,q_reasons,q_hallucinates,q_incompetent
+conflict_resolution,75,-0.0019,0.4345,0.0552,0.3765,-0.1961,0.5146,-0.0476,0.3782,30,14,11,20
+issue_spotting,75,0.2882,0.4989,0.3237,0.4737,0.0087,0.4219,0.2069,0.4145,15,44,5,11
+rule_selection,75,0.1278,0.4803,0.2256,0.4264,-0.098,0.5016,0.0851,0.4286,25,26,10,14
+temporal_validity,75,0.0419,0.3876,-0.0117,0.4134,-0.2623,0.5032,-0.0773,0.3628,30,14,15,16

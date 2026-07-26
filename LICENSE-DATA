@@ -1,0 +1,32 @@
+# Data License — Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+The **data** components of MHGB are licensed under CC BY 4.0. This covers:
+
+- `data/graph.json` — the typed statutory knowledge graph (nodes and edges)
+- `data/tasks_public_120.jsonl` — the public task subset, including gold reasoning chains
+- `data/graph_diagnostics_v2.json` — graph statistics
+- the full 600-task set, when obtained under the access terms described in `README.md`
+
+**Not covered by this license:**
+
+- Source code (`src/`, `scripts/`, `tests/`, `graph_explorer.py`, `prompts/`), which is
+  licensed under Apache-2.0 — see `LICENSE`.
+- `data/corpus.jsonl` — the text of Russian federal codes. Under Article 1259(6) of the
+  Civil Code of the Russian Federation, official documents of state bodies, including
+  laws, are not subject to copyright. These texts are in the public domain; we claim no
+  rights over them. The parsing, segmentation and metadata we added to those texts
+  (article boundaries, validity dates, branch-of-law labels, repeal flags) are released
+  under CC BY 4.0 together with the rest of the derived data.
+
+## License summary
+
+You are free to share and adapt the data for any purpose, including commercially,
+provided you give appropriate credit, link to the license, and indicate if changes were
+made.
+
+Full legal text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+## Attribution
+
+When using MHGB data, please cite the paper (see `CITATION.cff` or the "How to cite"
+section of `README.md`).

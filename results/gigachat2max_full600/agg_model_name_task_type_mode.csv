@@ -1,0 +1,9 @@
+model_name,task_type,mode,count,norm_coverage_list_mean,norm_coverage_list_std,norm_coverage_reasoning_mean,norm_coverage_reasoning_std,step_correctness_mean,step_correctness_std,answer_correctness_mean,answer_correctness_std,final_score_mean,final_score_std
+gigachat-2-max,conflict_resolution,closed,75,0.544,0.3164,0.5452,0.3159,0.3891,0.2928,0.6764,0.3913,0.5365,0.2244
+gigachat-2-max,conflict_resolution,open_full_graph_edges,75,0.5422,0.4051,0.5337,0.4051,0.4443,0.3641,0.4803,0.466,0.4889,0.3785
+gigachat-2-max,issue_spotting,closed,75,0.3075,0.3089,0.3133,0.3067,0.2915,0.3093,0.6547,0.2716,0.4179,0.2294
+gigachat-2-max,issue_spotting,open_full_graph_edges,75,0.5957,0.3566,0.6016,0.3694,0.6152,0.3704,0.6633,0.3738,0.6248,0.337
+gigachat-2-max,rule_selection,closed,75,0.4223,0.2781,0.4152,0.2832,0.2811,0.2329,0.672,0.3817,0.4584,0.2184
+gigachat-2-max,rule_selection,open_full_graph_edges,75,0.55,0.3812,0.551,0.3796,0.5067,0.3481,0.574,0.4371,0.5436,0.3564
+gigachat-2-max,temporal_validity,closed,75,0.5176,0.3354,0.5171,0.3361,0.3959,0.37,0.7695,0.3421,0.561,0.2611
+gigachat-2-max,temporal_validity,open_full_graph_edges,75,0.5595,0.3893,0.5546,0.394,0.3843,0.3432,0.5072,0.4599,0.4836,0.3424

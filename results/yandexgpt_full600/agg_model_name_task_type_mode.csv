@@ -1,0 +1,9 @@
+model_name,task_type,mode,count,norm_coverage_list_mean,norm_coverage_list_std,norm_coverage_reasoning_mean,norm_coverage_reasoning_std,step_correctness_mean,step_correctness_std,answer_correctness_mean,answer_correctness_std,final_score_mean,final_score_std
+yandexgpt-5-pro,conflict_resolution,closed,75,0.5311,0.355,0.5214,0.3542,0.3445,0.2799,0.5468,0.3669,0.4741,0.2791
+yandexgpt-5-pro,conflict_resolution,open_full_graph_edges,74,0.7478,0.2625,0.7387,0.2629,0.5995,0.2983,0.6849,0.3901,0.6774,0.2626
+yandexgpt-5-pro,issue_spotting,closed,75,0.2702,0.2875,0.2703,0.2986,0.2241,0.2727,0.6456,0.2656,0.38,0.2209
+yandexgpt-5-pro,issue_spotting,open_full_graph_edges,69,0.7227,0.3109,0.7332,0.3123,0.6363,0.3204,0.692,0.3201,0.6837,0.2814
+yandexgpt-5-pro,rule_selection,closed,75,0.3711,0.2808,0.3659,0.2914,0.2488,0.231,0.6225,0.3892,0.4141,0.2357
+yandexgpt-5-pro,rule_selection,open_full_graph_edges,73,0.7164,0.2256,0.726,0.2199,0.6211,0.2525,0.7448,0.3666,0.6941,0.2142
+yandexgpt-5-pro,temporal_validity,closed,75,0.5008,0.384,0.4641,0.4065,0.3372,0.3503,0.6227,0.353,0.4869,0.285
+yandexgpt-5-pro,temporal_validity,open_full_graph_edges,71,0.7314,0.2731,0.716,0.2706,0.5197,0.3288,0.7189,0.3594,0.6566,0.25

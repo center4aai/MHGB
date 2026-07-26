@@ -1,0 +1,24 @@
+{
+  "description": "Public stratified subset of the MHGB benchmark. Sampled at fabula level so closed/open pairs are preserved.",
+  "seed": 42,
+  "fabulas_per_cell": 5,
+  "n_fabulas": 60,
+  "n_instances": 120,
+  "n_closed": 60,
+  "n_open": 60,
+  "matrix": {
+    "issue_spotting/shallow": 10,
+    "issue_spotting/medium": 10,
+    "issue_spotting/deep": 10,
+    "rule_selection/shallow": 10,
+    "rule_selection/medium": 10,
+    "rule_selection/deep": 10,
+    "conflict_resolution/shallow": 10,
+    "conflict_resolution/medium": 10,
+    "conflict_resolution/deep": 10,
+    "temporal_validity/shallow": 10,
+    "temporal_validity/medium": 10,
+    "temporal_validity/deep": 10
+  },
+  "source": "tasks_raw.jsonl (600 instances, 300 fabulas)"
+}

@@ -1,0 +1,5 @@
+model_name,task_type,n_pairs,norm_coverage_gap_mean,norm_coverage_gap_std,step_correctness_gap_mean,step_correctness_gap_std,answer_correctness_gap_mean,answer_correctness_gap_std,final_score_gap_mean,final_score_gap_std,q_knows,q_reasons,q_hallucinates,q_incompetent
+gemma4-26b,conflict_resolution,75,0.1915,0.3014,0.2383,0.2211,0.1507,0.4433,0.1935,0.2208,38,24,1,12
+gemma4-26b,issue_spotting,75,0.441,0.4207,0.6167,0.2977,0.2675,0.3386,0.4417,0.2681,13,56,0,6
+gemma4-26b,rule_selection,75,0.3187,0.4174,0.4243,0.2884,0.2712,0.4235,0.3381,0.2883,19,44,3,9
+gemma4-26b,temporal_validity,75,0.2295,0.3509,0.2823,0.3,0.1287,0.3426,0.2135,0.2144,31,27,3,14

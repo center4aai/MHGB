@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mhgb"]
+
+[project]
+name = "mhgb"
+version = "1.0.0"
+description = "MHGB — a multi-hop knowledge graph benchmark for legal reasoning over Russian statutory law"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.12"
+dependencies = [
+    "loguru>=0.7",
+    "networkx>=3.6.1",
+    "openai>=1.0",
+    "openpyxl>=3.1",
+    "pydantic>=2.0",
+    "pydantic-settings>=2.0",
+    "pymongo>=4.0",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+    "python-docx>=1.2.0",
+    "pyvis>=0.3.2",
+    "streamlit>=1.56.0",
+    "tqdm>=4.67.3",
+    "plotly>=5.0",
+    "kaleido>=0.2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = ""

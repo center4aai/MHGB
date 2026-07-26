@@ -1,0 +1,26 @@
+# Secrets
+.env
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.coverage
+dist/
+build/
+.ipynb_checkpoints/
+
+# Run artifacts
+reports/
+logs/
+data/embeddings/
+
+# Backups / editor leftovers
+*.bak
+*.bak_*
+~$*
+.vscode/
+.idea/

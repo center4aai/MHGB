@@ -1,0 +1,4 @@
+hop_group,n_pairs,norm_coverage_gap_mean,norm_coverage_gap_std,step_correctness_gap_mean,step_correctness_gap_std,answer_correctness_gap_mean,answer_correctness_gap_std,final_score_gap_mean,final_score_gap_std,q_knows,q_reasons,q_hallucinates,q_incompetent
+deep,100,0.2859,0.18,0.1776,0.1755,0.0265,0.3135,0.1634,0.1586,73,20,3,4
+medium,100,0.2299,0.212,0.1987,0.2293,0.0099,0.3368,0.1462,0.1783,74,15,2,9
+shallow,100,0.1892,0.2514,0.1492,0.3201,0.0866,0.4231,0.1417,0.2503,70,22,2,6

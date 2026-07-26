@@ -1,0 +1,9 @@
+model_name,task_type,mode,count,norm_coverage_list_mean,norm_coverage_list_std,norm_coverage_reasoning_mean,norm_coverage_reasoning_std,step_correctness_mean,step_correctness_std,answer_correctness_mean,answer_correctness_std,final_score_mean,final_score_std
+mistral-small-3-2,conflict_resolution,closed,75,0.5286,0.2861,0.5216,0.2905,0.3852,0.2723,0.4804,0.4079,0.4647,0.2199
+mistral-small-3-2,conflict_resolution,open_full_graph_edges,75,0.7324,0.2327,0.7205,0.2373,0.6166,0.2504,0.6051,0.4271,0.6513,0.2117
+mistral-small-3-2,issue_spotting,closed,75,0.2083,0.2403,0.192,0.2541,0.1919,0.2302,0.4537,0.3907,0.2846,0.2078
+mistral-small-3-2,issue_spotting,open_full_graph_edges,75,0.6623,0.2887,0.658,0.2967,0.7473,0.237,0.7033,0.2983,0.7043,0.1836
+mistral-small-3-2,rule_selection,closed,75,0.2749,0.2511,0.2591,0.2635,0.2172,0.2442,0.5432,0.4169,0.3451,0.2387
+mistral-small-3-2,rule_selection,open_full_graph_edges,75,0.6519,0.268,0.6311,0.2578,0.6039,0.2622,0.6672,0.4066,0.641,0.2214
+mistral-small-3-2,temporal_validity,closed,75,0.4208,0.3191,0.4209,0.3504,0.375,0.3531,0.5824,0.4109,0.4594,0.2748
+mistral-small-3-2,temporal_validity,open_full_graph_edges,75,0.6092,0.3202,0.6096,0.3291,0.4851,0.2864,0.6579,0.4246,0.5841,0.2331

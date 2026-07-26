@@ -1,0 +1,15 @@
+MHGB — Multi-Hop Graph Bench for Legal Reasoning
+Copyright 2026 The MHGB Authors
+
+This product includes software developed by the MHGB Authors,
+licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Data components (knowledge graph, task set, gold reasoning chains) are
+licensed under Creative Commons Attribution 4.0 International
+(see LICENSE-DATA).
+
+The statutory corpus in data/corpus.jsonl reproduces the text of federal
+codes of the Russian Federation. Under Article 1259(6) of the Civil Code
+of the Russian Federation, official documents of state bodies — including
+laws — are not objects of copyright. The MHGB Authors claim no rights over
+these texts.

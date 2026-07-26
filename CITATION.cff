@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+title: "MHGB: A Multi-Hop Knowledge Graph Benchmark for Legal Reasoning Evaluation"
+message: "If you use this benchmark, please cite the paper."
+type: dataset
+authors:
+  - given-names: Marina
+    family-names: Polukoshko
+    email: polukoshko.marina@gmail.com
+    orcid: "https://orcid.org/0009-0000-8568-041X"
+    affiliation: "Center for Applied Artificial Intelligence, Institute of Social Sciences"
+  - given-names: Yegor
+    family-names: Anichkov
+    affiliation: "Center for Applied Artificial Intelligence, Institute of Social Sciences"
+  - given-names: Vadim
+    family-names: Akhmetov
+    affiliation: "Center for Applied Artificial Intelligence, Institute of Social Sciences"
+  - given-names: Nataliya
+    family-names: Oruzheynikova
+    affiliation: "Center for Applied Artificial Intelligence, Institute of Social Sciences"
+  - given-names: Sergey
+    family-names: Bolovtsov
+    affiliation: "Center for Applied Artificial Intelligence, Institute of Social Sciences"
+  - given-names: "Marina Alexandrovna"
+    family-names: Ivanova
+    affiliation: "RANEPA"
+  - given-names: Pavel
+    family-names: Golosov
+    affiliation: "Institute of Social Sciences"
+license: Apache-2.0
+license-url: "https://www.apache.org/licenses/LICENSE-2.0"
+keywords:
+  - legal reasoning
+  - knowledge graph
+  - benchmark
+  - large language models
+  - multi-hop reasoning
+  - Russian law
+repository-code: "https://github.com/center4aai/MHGB"

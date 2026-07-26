@@ -1,0 +1,7 @@
+model_name,hop_group,mode,count,norm_coverage_list_mean,norm_coverage_list_std,norm_coverage_reasoning_mean,norm_coverage_reasoning_std,step_correctness_mean,step_correctness_std,answer_correctness_mean,answer_correctness_std,final_score_mean,final_score_std
+deepseek-r1-32b-ollama,deep,closed,100,0.2065,0.2221,0.2034,0.2133,0.1168,0.1451,0.5034,0.331,0.2756,0.171
+deepseek-r1-32b-ollama,deep,open_full_graph_edges,100,0.6449,0.2461,0.6252,0.2392,0.4565,0.1633,0.6641,0.3201,0.5885,0.1651
+deepseek-r1-32b-ollama,medium,closed,100,0.3217,0.3659,0.3175,0.3642,0.2025,0.2385,0.5601,0.3966,0.3614,0.2406
+deepseek-r1-32b-ollama,medium,open_full_graph_edges,100,0.7287,0.2441,0.7333,0.2438,0.5942,0.2303,0.7205,0.3475,0.6811,0.1938
+deepseek-r1-32b-ollama,shallow,closed,100,0.4273,0.4425,0.439,0.4502,0.3525,0.4013,0.5638,0.4464,0.4479,0.3092
+deepseek-r1-32b-ollama,shallow,open_full_graph_edges,100,0.7513,0.2414,0.8043,0.2446,0.7858,0.2816,0.7538,0.3895,0.7637,0.2114

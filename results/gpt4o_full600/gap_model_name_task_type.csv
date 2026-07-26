@@ -1,0 +1,5 @@
+model_name,task_type,n_pairs,norm_coverage_gap_mean,norm_coverage_gap_std,step_correctness_gap_mean,step_correctness_gap_std,answer_correctness_gap_mean,answer_correctness_gap_std,final_score_gap_mean,final_score_gap_std,q_knows,q_reasons,q_hallucinates,q_incompetent
+gpt-4o,conflict_resolution,72,0.2194,0.2654,0.1966,0.2583,0.0788,0.4502,0.1649,0.2161,34,25,5,8
+gpt-4o,issue_spotting,65,0.389,0.3261,0.4999,0.3413,0.21,0.3265,0.3663,0.2463,23,36,1,5
+gpt-4o,rule_selection,69,0.2966,0.2753,0.3423,0.3053,0.1691,0.3988,0.2693,0.2392,40,26,1,2
+gpt-4o,temporal_validity,70,0.2351,0.256,0.17,0.3713,0.0381,0.3482,0.1477,0.2531,40,20,3,7

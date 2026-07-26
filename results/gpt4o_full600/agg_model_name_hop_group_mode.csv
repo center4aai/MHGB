@@ -1,0 +1,7 @@
+model_name,hop_group,mode,count,norm_coverage_list_mean,norm_coverage_list_std,norm_coverage_reasoning_mean,norm_coverage_reasoning_std,step_correctness_mean,step_correctness_std,answer_correctness_mean,answer_correctness_std,final_score_mean,final_score_std
+gpt-4o,deep,closed,100,0.3984,0.2104,0.3996,0.2028,0.2772,0.1546,0.6044,0.3412,0.4267,0.1717
+gpt-4o,deep,open_full_graph_edges,78,0.7229,0.2013,0.7074,0.2072,0.5821,0.1816,0.7274,0.3301,0.6775,0.1613
+gpt-4o,medium,closed,100,0.532,0.2822,0.5383,0.2815,0.4321,0.2587,0.7072,0.3526,0.5571,0.2273
+gpt-4o,medium,open_full_graph_edges,98,0.789,0.1788,0.778,0.1807,0.7215,0.222,0.8168,0.3142,0.7758,0.1637
+gpt-4o,shallow,closed,100,0.4552,0.3217,0.4722,0.3358,0.5542,0.3897,0.6736,0.4212,0.561,0.2716
+gpt-4o,shallow,open_full_graph_edges,100,0.7167,0.2299,0.7386,0.2224,0.8358,0.2794,0.8035,0.3673,0.7854,0.1987
