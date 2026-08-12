@@ -24,3 +24,6 @@ data/embeddings/
 ~$*
 .vscode/
 .idea/
+
+# Streamlit: конфиг коммитим, секреты — нет
+.streamlit/secrets.toml

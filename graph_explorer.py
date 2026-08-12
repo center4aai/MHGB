@@ -1,10 +1,18 @@
 """
-MHGB Graph Explorer
-Запуск: uv run streamlit run graph_explorer.py
+MHGB Graph Explorer — interactive interface to the knowledge graph and the tasks.
+
+Run:  uv run streamlit run graph_explorer.py
+
+Optional environment variables (defaults suit a plain checkout):
+  MHGB_DATA_DIR      directory holding graph.json / corpus.jsonl / the task file
+  MHGB_REPORTS_DIR   directory holding evaluation results (Analytics, Leaderboard)
+  MHGB_CONFIGS_DIR   directory holding models.yaml
+  MHGB_ALLOW_EXPORT  "1" re-enables the table export button (disabled by default)
 """
 
 import html as _html
 import json
+import os
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -24,14 +32,33 @@ except ImportError:
 # Конфиг
 # ---------------------------------------------------------------------------
 
-GRAPH_PATH        = Path("data/graph.json")
-CORPUS_PATH       = Path("data/corpus.jsonl")
-# Полный набор (600) при наличии, иначе публичное подмножество (120).
-_TASKS_FULL       = Path("data/tasks_raw.jsonl")
-TASKS_PATH        = _TASKS_FULL if _TASKS_FULL.exists() else Path("data/tasks_public_120.jsonl")
-REPORTS_DIR       = Path("reports")
+# Paths resolve relative to this file rather than the current directory: under a
+# service manager the working directory is set separately and cannot be relied on.
+# Each directory can be overridden, so data may live outside the checkout.
+_APP_DIR = Path(__file__).resolve().parent
+
+
+def _dir_from_env(var: str, default: Path) -> Path:
+    value = os.environ.get(var)
+    return Path(value).expanduser().resolve() if value else default
+
+
+DATA_DIR          = _dir_from_env("MHGB_DATA_DIR",    _APP_DIR / "data")
+REPORTS_DIR       = _dir_from_env("MHGB_REPORTS_DIR", _APP_DIR / "reports")
+CONFIGS_DIR       = _dir_from_env("MHGB_CONFIGS_DIR", _APP_DIR / "configs")
+
+GRAPH_PATH        = DATA_DIR / "graph.json"
+CORPUS_PATH       = DATA_DIR / "corpus.jsonl"
+# The full 600-task set when present, otherwise the public 120-task subset.
+_TASKS_FULL       = DATA_DIR / "tasks_raw.jsonl"
+TASKS_PATH        = _TASKS_FULL if _TASKS_FULL.exists() else DATA_DIR / "tasks_public_120.jsonl"
 PHASE2_DIR        = REPORTS_DIR / "phase2"
-MODELS_YAML_PATH  = Path("configs/models.yaml")
+MODELS_YAML_PATH  = CONFIGS_DIR / "models.yaml"
+
+# Table export is off by default. The st.dataframe toolbar carries a
+# "Download as CSV" button that would dump every filtered task, seed norms
+# included; browsing tasks one by one stays available.
+ALLOW_EXPORT = os.environ.get("MHGB_ALLOW_EXPORT", "") == "1"
 
 # ---------------------------------------------------------------------------
 # Версионирование экспериментов (P2-4.7): MVP (май 2026) vs Phase-2 (июнь-июль)
@@ -1385,6 +1412,18 @@ st.set_page_config(
     page_icon="⚖️",
     layout="wide",
 )
+
+if not ALLOW_EXPORT:
+    # Hide the element toolbar (download / fullscreen / search) that sits above
+    # st.dataframe: its CSV button exports the whole filtered table at once.
+    st.markdown(
+        """
+        <style>
+          [data-testid="stElementToolbar"] { display: none !important; }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
 st.title("⚖️ MHGB — Legal Multi-hop Graph Bench")
 

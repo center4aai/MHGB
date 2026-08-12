@@ -1,0 +1,20 @@
+# Streamlit configuration for the MHGB Graph Explorer.
+
+[theme]
+# The light theme is set deliberately — do not remove it.
+#
+# Without it Streamlit follows the viewer's device preference
+# (prefers-color-scheme). On a device in dark mode the app renders dark, but
+# roughly twenty blocks in graph_explorer.py hard-code a light background
+# (#f8f9fa and similar) without setting a text colour: the text inherits the
+# theme and turns white on white, hiding the fabula, the question and the
+# reference answer. Confirmed on a phone, 2026-08-12.
+#
+# The proper fix is an explicit `color:` in each of those blocks; until then the
+# theme stays pinned. The PyVis graph keeps its own dark background and is
+# unaffected.
+base = "light"
+
+[browser]
+# Do not send usage statistics.
+gatherUsageStats = false

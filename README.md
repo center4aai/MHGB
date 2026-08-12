@@ -47,7 +47,7 @@ practice for contamination-sensitive benchmarks, not a restriction on use.
 | Tier | What | How |
 |---|---|---|
 | **1. Public** | Full code, full knowledge graph, full statutory corpus, a stratified **120-task subset** with gold chains, and **per-model scores over all 300 fabulas** | This repository |
-| **2. Browsable** | All 600 tasks with their gold reasoning chains and context, inspectable one by one, but not downloadable in bulk | Interactive web interface — *link to be added* |
+| **2. Browsable** | All 600 tasks with their gold reasoning chains and context, inspectable one by one, but not downloadable in bulk | [Graph Explorer](http://83.143.66.61:27361/) |
 | **3. On request** | Full 600-task set as data files | Email **polukoshko.marina@gmail.com**, stating your intended use |
 
 The public subset is a stratified sample of 10 task instances per cell of the 4×3 matrix,
@@ -63,6 +63,18 @@ python scripts/select_public_subset.py \
 
 The entire pipeline — context construction, model inference, three-level scoring,
 aggregation — runs end to end on the public subset.
+
+### Graph Explorer
+
+**http://83.143.66.61:27361/** — the live interface, no login required. Browse the
+knowledge graph, open any of the 600 tasks with its gold reasoning chain and
+statutory context, and view the leaderboard and quadrant matrices for all twelve
+evaluated models. The same application ships in this repository
+(`graph_explorer.py`) and runs on the public subset out of the box.
+
+The service is plain HTTP on a non-standard port; some restrictive networks block
+such ports. If it does not open, the repository contains everything needed to run
+the interface locally.
 
 ---
 
@@ -219,6 +231,9 @@ here; `data/corpus.jsonl` is the parsed result and is sufficient for everything 
 ```bash
 uv run streamlit run graph_explorer.py
 ```
+
+A hosted instance carrying the full task set runs at
+**http://83.143.66.61:27361/**.
 
 Browse the graph, inspect tasks with their gold chains and context, and view the
 leaderboard and quadrant matrices for any local evaluation runs.
