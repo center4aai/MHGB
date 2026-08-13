@@ -1,0 +1,55 @@
+{
+  "upload_type": "dataset",
+  "title": "MHGB: A Multi-Hop Knowledge Graph Benchmark for Legal Reasoning Evaluation",
+  "description": "<p>MHGB is a benchmark for evaluating multi-hop legal reasoning over Russian statutory law. It represents statutory knowledge as a typed graph of 5,519 article nodes connected by 8,760 relations of five types across ten federal codes, and uses that structure to generate 600 multi-hop reasoning tasks, each carrying a gold reasoning chain.</p><p>Every task is posed in two modes: closed-book, answered from parametric knowledge alone, and open-book, with graph-derived statutory context. Responses are scored at three levels by two LLM judges held outside the leaderboard, and the GAP metric measures the change between the two modes.</p><p>This deposit contains the full knowledge graph, the statutory corpus, a stratified 120-task public subset with gold reasoning chains, per-model scores for twelve evaluated models, the complete evaluation pipeline and an interactive graph explorer. Code is licensed under Apache-2.0, derived data under CC BY-4.0; the statutory texts are in the public domain.</p>",
+  "creators": [
+    {
+      "name": "Polukoshko, Marina",
+      "affiliation": "Center for Applied Artificial Intelligence, Institute of Social Sciences",
+      "orcid": "0009-0000-8568-041X"
+    },
+    {
+      "name": "Anichkov, Yegor",
+      "affiliation": "Center for Applied Artificial Intelligence, Institute of Social Sciences"
+    },
+    {
+      "name": "Akhmetov, Vadim",
+      "affiliation": "Center for Applied Artificial Intelligence, Institute of Social Sciences"
+    },
+    {
+      "name": "Oruzheynikova, Nataliya",
+      "affiliation": "Center for Applied Artificial Intelligence, Institute of Social Sciences"
+    },
+    {
+      "name": "Bolovtsov, Sergey",
+      "affiliation": "Center for Applied Artificial Intelligence, Institute of Social Sciences"
+    },
+    {
+      "name": "Ivanova, Marina Alexandrovna",
+      "affiliation": "RANEPA"
+    },
+    {
+      "name": "Golosov, Pavel",
+      "affiliation": "Institute of Social Sciences"
+    }
+  ],
+  "license": "apache2.0",
+  "access_right": "open",
+  "keywords": [
+    "legal reasoning",
+    "knowledge graph",
+    "benchmark",
+    "large language models",
+    "multi-hop reasoning",
+    "Russian law",
+    "legal NLP",
+    "LLM evaluation"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/center4aai/MHGB",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}
