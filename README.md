@@ -232,6 +232,11 @@ here; `data/corpus.jsonl` is the parsed result and is sufficient for everything 
 uv run streamlit run graph_explorer.py
 ```
 
+Sections are chosen from the sidebar: **Graph** (metrics, filters and the PyVis
+graph, with article text and metadata on click), **Tasks** (browse tasks with
+their gold chains and statutory context), **Analytics** (quadrant matrix and
+per-slice metrics for local evaluation runs) and **Leaderboard**.
+
 A hosted instance carrying the full task set runs at
 **http://83.143.66.61:27361/**.
 
