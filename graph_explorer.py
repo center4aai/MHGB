@@ -1447,83 +1447,150 @@ edge_type_counts = Counter(
 )
 
 # ---------------------------------------------------------------------------
-# Sidebar — фильтры графа
+# Навигация: разделы в сайдбаре (раньше здесь жили фильтры графа — они
+# переехали в тело раздела «Граф», между метриками и самим графом)
 # ---------------------------------------------------------------------------
 
+PAGE_GRAPH       = "🗺 Граф"
+PAGE_TASKS       = "📋 Задачи"
+PAGE_ANALYTICS   = "📊 Аналитика"
+PAGE_LEADERBOARD = "🏆 Лидерборд"
+PAGES = [PAGE_GRAPH, PAGE_TASKS, PAGE_ANALYTICS, PAGE_LEADERBOARD]
+
+# Меню из кнопок во всю ширину: активный раздел выделен цветом. Кнопки заметнее
+# радио-списка, а высота строки задаётся стилем ниже.
+st.markdown(
+    """
+    <style>
+      section[data-testid="stSidebar"] div.stButton > button {
+          font-size: 1.05rem;
+          font-weight: 600;
+          padding: 0.6rem 0.9rem;
+          text-align: left;
+          justify-content: flex-start;
+          margin-bottom: 0.25rem;
+      }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+st.session_state.setdefault("nav_page", PAGE_GRAPH)
+
 with st.sidebar:
-    st.header("Фильтры графа")
+    st.markdown("### Разделы")
+    for _p in PAGES:
+        _is_active = st.session_state["nav_page"] == _p
+        if st.button(
+            _p,
+            use_container_width=True,
+            type="primary" if _is_active else "secondary",
+            key=f"nav_btn_{_p}",
+        ):
+            # Перерисовываем сразу, иначе подсветка активного раздела отстала бы
+            # на одно нажатие: кнопки выше уже отрисованы с прежним значением.
+            st.session_state["nav_page"] = _p
+            st.rerun()
 
-    all_laws = ["ТК", "ГК", "КоАП", "УК", "НК", "СК", "ЖК", "ЗК", "ГрК", "КРФ"]
-    selected_laws = st.multiselect(
-        "Кодексы",
-        all_laws,
-        default=["ТК"],
-        help="Показывать статьи из выбранных кодексов",
-    )
-
-    st.markdown("---")
-    st.subheader("Типы рёбер")
-
-    semantic_types = ["исключает", "дополняет", "приоритет", "применяется_к"]
-    selected_edge_types = []
-    for et in semantic_types:
-        cnt = edge_type_counts.get(et, 0)
-        checked = st.checkbox(f"{et} ({cnt})", value=True, key=f"et_{et}")
-        if checked:
-            selected_edge_types.append(et)
-
-    include_refs = st.checkbox(
-        f"ссылается_на ({edge_type_counts.get('ссылается_на', 0)})",
-        value=False,
-        help="Включить нейтральные ссылки (много рёбер, может замедлить)",
-    )
-
-    st.markdown("---")
-    hide_repealed = st.checkbox("Скрыть утратившие силу", value=True)
-    max_nodes     = st.slider("Макс. нод", 20, 500, 150, step=10)
-    physics_on    = st.checkbox("Физика (авто-расстановка)", value=True)
-
-    st.markdown("---")
-    st.subheader("Легенда рёбер")
-    for et, color in EDGE_COLORS.items():
-        if et == "ссылается_на" and not include_refs:
-            continue
-        st.markdown(
-            f'<span style="background:{color};padding:2px 8px;border-radius:4px;'
-            f'color:#000;font-size:12px">{et}</span>',
-            unsafe_allow_html=True,
-        )
-
-    st.markdown("---")
-    st.subheader("Легенда нод")
-    st.markdown(
-        '<span style="background:#95a5a6;padding:2px 8px;border-radius:4px;'
-        'color:#000;font-size:12px">⚠ Утратила силу</span>',
-        unsafe_allow_html=True,
-    )
-    st.markdown(
-        '<span style="background:#f0f0f0;border:2px solid #e74c3c;padding:2px 8px;'
-        'border-radius:4px;color:#000;font-size:12px">⚠ Частичная утрата</span>',
-        unsafe_allow_html=True,
-    )
-    st.markdown("---")
-    st.subheader("Размер нод")
-    st.caption("Больше = больше входящих ссылок")
+page = st.session_state["nav_page"]
 
 
 # ---------------------------------------------------------------------------
 # Вкладки
 # ---------------------------------------------------------------------------
 
-tab_graph, tab_tasks, tab_analytics, tab_leaderboard = st.tabs(
-    ["🗺 Граф", "📋 Задачи", "📊 Аналитика", "🏆 Лидерборд"]
-)
+# Разделы выбираются кнопками в сайдбаре (см. блок «Навигация» выше).
+# Выполняется тело только выбранного раздела, а не всех сразу, как было с st.tabs.
 
 # ===========================================================================
-# Вкладка: Граф
+# Раздел: Граф
 # ===========================================================================
 
-with tab_graph:
+if page == PAGE_GRAPH:
+    # Метрики считаются по подграфу, а подграф — по фильтрам, которые лежат НИЖЕ.
+    # Резервируем место контейнером и заполняем его, когда подграф посчитан:
+    # так на экране метрики остаются сверху, а фильтры — под ними.
+    _metrics_slot = st.container()
+
+    # ── Фильтры графа ────────────────────────────────────────────────────────
+    # Значения хранятся в st.session_state под своими ключами и подставляются как
+    # default/value. Без этого фильтры сбрасывались бы при уходе в другой раздел:
+    # виджеты неотрисованного раздела Streamlit не сохраняет.
+    _ss = st.session_state
+    _ss.setdefault("flt_laws", ["ТК"])
+    _ss.setdefault("flt_edge_types", ["исключает", "дополняет", "приоритет", "применяется_к"])
+    _ss.setdefault("flt_include_refs", False)
+    _ss.setdefault("flt_hide_repealed", True)
+    _ss.setdefault("flt_max_nodes", 150)
+    _ss.setdefault("flt_physics", True)
+
+    _f_laws, _f_edges, _f_view = st.columns([3, 3, 3], gap="large")
+
+    with _f_laws:
+        all_laws = ["ТК", "ГК", "КоАП", "УК", "НК", "СК", "ЖК", "ЗК", "ГрК", "КРФ"]
+        selected_laws = st.multiselect(
+            "Кодексы",
+            all_laws,
+            default=_ss["flt_laws"],
+            help="Показывать статьи из выбранных кодексов",
+        )
+        _ss["flt_laws"] = selected_laws
+
+    with _f_edges:
+        st.markdown("**Типы рёбер**")
+        semantic_types = ["исключает", "дополняет", "приоритет", "применяется_к"]
+        selected_edge_types = []
+        for et in semantic_types:
+            cnt = edge_type_counts.get(et, 0)
+            if st.checkbox(f"{et} ({cnt})", value=et in _ss["flt_edge_types"]):
+                selected_edge_types.append(et)
+        _ss["flt_edge_types"] = selected_edge_types
+        include_refs = st.checkbox(
+            f"ссылается_на ({edge_type_counts.get('ссылается_на', 0)})",
+            value=_ss["flt_include_refs"],
+            help="Включить нейтральные ссылки (много рёбер, может замедлить)",
+        )
+        _ss["flt_include_refs"] = include_refs
+
+    with _f_view:
+        st.markdown("**Отображение**")
+        hide_repealed = st.checkbox("Скрыть утратившие силу", value=_ss["flt_hide_repealed"])
+        max_nodes     = st.slider("Макс. нод", 20, 500, _ss["flt_max_nodes"], step=10)
+        physics_on    = st.checkbox("Физика (авто-расстановка)", value=_ss["flt_physics"])
+        _ss["flt_hide_repealed"] = hide_repealed
+        _ss["flt_max_nodes"]     = max_nodes
+        _ss["flt_physics"]       = physics_on
+
+    # ── Легенда: три группы в одну строку, без вертикальных отступов ─────────
+    _chip = ("display:inline-block;padding:2px 8px;border-radius:4px;"
+             "color:#000;font-size:12px;margin:0 6px 4px 0;white-space:nowrap")
+    _edge_chips = "".join(
+        f'<span style="background:{color};{_chip}">{et}</span>'
+        for et, color in EDGE_COLORS.items()
+        if not (et == "ссылается_на" and not include_refs)
+    )
+    _node_chips = (
+        f'<span style="background:#95a5a6;{_chip}">⚠ Утратила силу</span>'
+        f'<span style="background:#f0f0f0;border:2px solid #e74c3c;{_chip}">'
+        f'⚠ Частичная утрата</span>'
+    )
+    _l1, _l2 = st.columns([5, 4], gap="small")
+    with _l1:
+        st.markdown(
+            f'<div style="line-height:1.9"><b style="font-size:13px">Рёбра:</b> '
+            f'{_edge_chips}</div>',
+            unsafe_allow_html=True,
+        )
+    with _l2:
+        st.markdown(
+            f'<div style="line-height:1.9"><b style="font-size:13px">Ноды:</b> '
+            f'{_node_chips}'
+            f'<span style="font-size:12px;color:#666">размер = входящие ссылки</span></div>',
+            unsafe_allow_html=True,
+        )
+
+    st.markdown("---")
+
     SG = get_subgraph(
         G, corpus,
         selected_laws=selected_laws,
@@ -1533,11 +1600,12 @@ with tab_graph:
         hide_repealed=hide_repealed,
     )
 
-    col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Нод (подграф)", SG.number_of_nodes())
-    col2.metric("Рёбер (подграф)", SG.number_of_edges())
-    col3.metric("Всего нод", G.number_of_nodes())
-    col4.metric("Всего рёбер", G.number_of_edges())
+    with _metrics_slot:
+        col1, col2, col3, col4 = st.columns(4)
+        col1.metric("Нод (подграф)", SG.number_of_nodes())
+        col2.metric("Рёбер (подграф)", SG.number_of_edges())
+        col3.metric("Всего нод", G.number_of_nodes())
+        col4.metric("Всего рёбер", G.number_of_edges())
 
     if SG.number_of_nodes() == 0:
         st.warning("Нет данных для выбранных фильтров.")
@@ -1610,10 +1678,10 @@ with tab_graph:
 
 
 # ===========================================================================
-# Вкладка: Задачи
+# Раздел: Задачи
 # ===========================================================================
 
-with tab_tasks:
+if page == PAGE_TASKS:
     if not tasks:
         st.warning("Задачи не найдены. Запустите: `uv run python src/mhgb/generate_tasks.py --type all --n 25`")
         st.stop()
@@ -1693,13 +1761,16 @@ with tab_tasks:
             values=[r[1] for r in _branch_rows],
             hole=0.35,
             textinfo="percent",
+            # Легенда крупнее в 1.8 раза (10 → 18), подписи на секторах — 13
+            # (крупнее не помещались в мелкие доли); круг на треть меньше (370 → 247).
+            textfont=dict(size=13),
             hovertemplate="%{label}<br>%{value} fabulas (%{percent})<extra></extra>",
         ))
         _pie_fig.update_layout(
             margin=dict(t=0, b=0, l=0, r=0),
-            height=370,
+            height=247,
             showlegend=True,
-            legend=dict(orientation="v", font=dict(size=10), x=1.0, y=0.5),
+            legend=dict(orientation="v", font=dict(size=18), x=1.0, y=0.5),
         )
         st.plotly_chart(_pie_fig, use_container_width=True)
 
@@ -1800,10 +1871,10 @@ with tab_tasks:
 
 
 # ===========================================================================
-# Вкладка: Аналитика
+# Раздел: Аналитика
 # ===========================================================================
 
-with tab_analytics:
+if page == PAGE_ANALYTICS:
     if not _PLOTLY_OK:
         st.error("Установи plotly: `uv add plotly kaleido`")
     else:
@@ -2293,9 +2364,9 @@ with tab_analytics:
 
 
 # ===========================================================================
-# Вкладка: Лидерборд
+# Раздел: Лидерборд
 # ===========================================================================
-with tab_leaderboard:
+if page == PAGE_LEADERBOARD:
     _lb_head_col, _lb_refresh_col = st.columns([6, 1])
     with _lb_head_col:
         st.subheader("🏆 Лидерборд моделей")
